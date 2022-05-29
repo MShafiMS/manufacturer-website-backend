@@ -163,13 +163,21 @@ async function run(){
             res.send(result);
         });
 
-        app.post('/order', async (req, res) => {
-            const newUser = req.body;
-            console.log(newUser);
-            const result = await orderCollection.insertOne(newUser);
-            res.send(result);
+        app.get('/order', verifyJWT, async (req, res) => {
+            const query = {};
+            const cursor = orderCollection.find(query);
+            const products = await cursor.toArray();
+            res.send(products);
 
         });
+        app.delete('/order/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await orderCollection.deleteOne(query);
+            res.send(result);
+        });
+
+        
 
 
         app.get('/myorder', verifyJWT, async (req, res) => {
@@ -209,6 +217,14 @@ async function run(){
             res.send(updatedDoc);
 
         })
+
+        app.post('/order', async (req, res) => {
+            const newUser = req.body;
+            console.log(newUser);
+            const result = await orderCollection.insertOne(newUser);
+            res.send(result);
+
+        });
 
 
     }
