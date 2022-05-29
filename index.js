@@ -155,26 +155,13 @@ async function run(){
 
 
 
-        app.post('/products', async (req, res) => {
-            const newUser = req.body;
-            console.log(newUser);
-            const result = await serviceCollection.insertOne(newUser);
-            res.send(result);
+          app.get('/products', async (req, res) => {
 
-        });
-
-        app.get('/products', async(req, res) =>{
             const query = {};
             const cursor = serviceCollection.find(query);
-            const services = await cursor.toArray();
-            res.send(services);
-        });
+            const products = await cursor.toArray();
+            res.send(products);
 
-        app.get('/products/:id', async (req, res) => {
-            const id = req.params.id;
-            const query = { _id: ObjectId(id) };
-            const result = await serviceCollection.findOne(query);
-            res.send(result);
         });
 
         app.get('/allproducts', verifyJWT, async (req, res) => {
@@ -184,6 +171,17 @@ async function run(){
             res.send(products);
 
         });
+
+        app.post('/products', async (req, res) => {
+            const newUser = req.body;
+            console.log(newUser);
+            const result = await serviceCollection.insertOne(newUser);
+            res.send(result);
+
+
+
+        });
+
 
         app.delete('/allproducts/:id', async (req, res) => {
             const id = req.params.id;
