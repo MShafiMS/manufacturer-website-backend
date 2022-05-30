@@ -3,6 +3,7 @@ const cors = require('cors');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 var jwt = require('jsonwebtoken');
 require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express()
 const port = process.env.PORT || 5000;
@@ -55,6 +56,7 @@ async function run(){
         const reviewCollection = client.db('tools_manufacturer').collection("reviews");
         const orderCollection = client.db('tools_manufacturer').collection("orders");
         const usersCollection = client.db('tools_manufacturer').collection("users");
+        const paymentCollection = client.db('tools_manufacturer').collection("payment");
 
         app.get('/myprofile', async (req, res) => {
             const users = await myCollection.find().toArray();
@@ -190,6 +192,22 @@ async function run(){
             res.send(result);
         });
 
+
+        app.post('/create-payment-intent', async (req, res) => {
+            const service = req.body;
+            console.log(service)
+            const price = service.price;
+            const amount = price * 100;
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: amount,
+                currency: 'usd',
+                payment_method_types: ['card']
+            });
+            console.log(paymentIntent.client_secret)
+            res.send({ clientSecret: paymentIntent.client_secret })
+        });
+
+
         app.get('/order', verifyJWT, async (req, res) => {
             const query = {};
             const cursor = orderCollection.find(query);
@@ -203,6 +221,15 @@ async function run(){
             const result = await orderCollection.deleteOne(query);
             res.send(result);
         });
+
+
+        app.get('/order/:id', verifyJWT, async(req, res) =>{
+            const id = req.params.id;
+            const query = {_id: ObjectId(id)};
+            const order = await orderCollection.findOne(query);
+            res.send(order);
+          })
+
 
         
 
@@ -239,7 +266,7 @@ async function run(){
                     transactionId: payment.transactionId
                 }
             }
-            const result = await payCollection.insertOne(payment);
+            const result = await paymentCollection.insertOne(payment);
             const updateOrder = await orderCollection.updateOne(filter, updatedDoc);
             res.send(updatedDoc);
 
@@ -251,8 +278,8 @@ async function run(){
             const result = await orderCollection.insertOne(newUser);
             res.send(result);
 
+        
         });
-
 
     }
     finally{
