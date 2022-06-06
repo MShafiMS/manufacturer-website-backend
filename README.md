@@ -1,21 +1,25 @@
 ## Project name: Dewalt Tools Manufacturer
 
-## Project Front-end git repositor name:manufacturer-website-client-side-MShafiMS
+## Project Front-end git repository name:manufacturer-website-client-side-MShafiMS
 
-## Project Back-end git repositor name:manufacturer-website-server-side-MShafiMS
+## Project Back-end git repository name:manufacturer-website-server-side-MShafiMS
 
 ## [Live Website](https://tools-manufacturer-f4df9.web.app/)
 
 Live WebsiteLink: [https://tools-manufacturer-f4df9.web.app/](https://tools-manufacturer-f4df9.web.app/)
 
-## Short Description
+## Project Overview:
 
-This website is about Tools innovation and technology. In this website tools can be found and the max quantity of each item can be updated for order.Items and reviews can be added to this website.Item can be order by payment method.Its website have admin navbars and users navbar.User Unpaid order can be deleted.For this , you have to open an account in this website and log in.This website can also be signed in through google. And there are some questions and answers in the blogs part of this website.
+- This is a full-stack Product Manufacturer Website.
+- Users need to log in with Google with Firebase Authentication.
+- Dashboard with nested route for User and Admin.
+- Admin can manage orders, quantity, add or delete.
+- Items and reviews can be added to this website. Items can be ordered by payment method.
 
-## Features of this project are:
+## Used Technology
 
-- React, tailwind.
-- Router,Private Router.
+- React, Tailwind, daisyUI.
+- React Router DOM, Private Route.
 - Firebase Authentication.
 - Node,Express,JSON Web Token(JWT).
 - MongoDB.
