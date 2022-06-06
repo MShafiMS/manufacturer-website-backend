@@ -1,8 +1,8 @@
 ## Project name: Dewalt Tools Manufacturer
 
-## Project Front-end git repository name:manufacturer-website-client-side-MShafiMS
+## Project Front-end git repository name:manufacturer-website-frontend
 
-## Project Back-end git repository name:manufacturer-website-server-side-MShafiMS
+## Project Back-end git repository name:manufacturer-website-backend
 
 ## [Live Website](https://tools-manufacturer-f4df9.web.app/)
 
@@ -23,3 +23,4 @@ Live WebsiteLink: [https://tools-manufacturer-f4df9.web.app/](https://tools-manu
 - Firebase Authentication.
 - Node,Express,JSON Web Token(JWT).
 - MongoDB.
+
