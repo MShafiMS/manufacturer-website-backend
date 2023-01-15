@@ -1,26 +1,24 @@
 ## Project name: Dewalt Tools Manufacturer
 
-## Project Front-end git repository name:manufacturer-website-frontend
+## Front-end git repository
+Visit: [https://github.com/MShafiMS/manufacturer-website-frontend](https://github.com/MShafiMS/manufacturer-website-frontend)
 
-## Project Back-end git repository name:manufacturer-website-backend
+## Back-end git repository
+
+Visit: [https://github.com/MShafiMS/manufacturer-website-backend](https://github.com/MShafiMS/manufacturer-website-backend)
 
 ## [Live Website](https://tools-manufacturer-f4df9.web.app/)
 
 Live WebsiteLink: [https://tools-manufacturer-f4df9.web.app/](https://tools-manufacturer-f4df9.web.app/)
 
-## Project Overview:
+## Short Description
 
-- This is a full-stack Product Manufacturer Website.
-- Users need to log in with Google with Firebase Authentication.
-- Dashboard with nested route for User and Admin.
-- Admin can manage orders, quantity, add or delete.
-- Items and reviews can be added to this website. Items can be ordered by payment method.
+This website is about Tools innovation and technology. In this website tools can be found and the max quantity of each item can be updated for order.Items and reviews can be added to this website.Item can be order by payment method.Its website have admin navbars and users navbar.User Unpaid order can be deleted.For this , you have to open an account in this website and log in.This website can also be signed in through google. And there are some questions and answers in the blogs part of this website.
 
-## Used Technology
+## Features of this project are:
 
-- React, Tailwind, daisyUI.
-- React Router DOM, Private Route.
+- React, tailwind.
+- Router,Private Router.
 - Firebase Authentication.
 - Node,Express,JSON Web Token(JWT).
 - MongoDB.
-
